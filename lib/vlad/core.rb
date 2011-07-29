@@ -61,6 +61,8 @@ namespace :vlad do
 
   remote_task :update, :roles => :app do
     symlink = false
+    branch ||= "trunk"
+    scm_path = File.join(scm_path, branch)
     begin
       commands = ["umask #{umask}"]
       unless skip_scm
