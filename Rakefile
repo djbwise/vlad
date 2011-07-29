@@ -1,24 +1,16 @@
 # -*- ruby -*-
 
 require 'rubygems'
-require 'hoe'
+require 'rake'
+require 'echoe'
 
-Hoe.plugin :seattlerb
-Hoe.plugin :isolate
-
-Hoe.spec 'vlad' do
-  self.rubyforge_name = 'hitsquad'
-
-  developer 'Ryan Davis',       'ryand-ruby@zenspider.com'
-  developer 'Eric Hodel',       'drbrain@segment7.net'
-  developer 'Wilson Bilkovich', 'wilson@supremetyrant.com'
-
-  dependency 'rake',             '~> 0.8'
-  dependency 'rake-remote_task', '~> 2.0'
-  dependency 'open4',            '~> 0.9.0'
-
-  # TODO: remove 1.9
-  multiruby_skip << "1.9" << "rubinius"
+Echoe.new('vlad-branch', '0.1.0') do |p|
+  p.description    = "added branches to vlad"
+  p.url            = "http://github.com/djbwise/vlad.git"
+  p.author         = "Brian Weisenthal"
+  p.email          = "djbwise@yahoo.com"
+  p.ignore_pattern = ["tmp/*", "script/*"]
+  p.development_dependencies = []
 end
 
 desc "quick little hack to see what the state of the nation looks like"
