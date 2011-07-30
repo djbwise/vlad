@@ -65,6 +65,7 @@ namespace :vlad do
       commands = ["umask #{umask}"]
       unless skip_scm
         commands << "cd #{scm_path}"
+        commands << "#{source.switch revision, scm_path}"
         commands << "#{source.checkout revision, scm_path}"
       end
       commands << "#{source.export revision, release_path}"

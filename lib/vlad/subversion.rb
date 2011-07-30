@@ -10,6 +10,10 @@ class Vlad::Subversion
   def checkout(revision, destination)
     "#{svn_cmd} co -r #{revision} #{repository} #{destination}"
   end
+  
+  def switch(revision, destination)
+    "#{svn_cmd} switch #{repository} #{destination}"
+  end
 
   ##
   # Returns the command that will export +revision+ from the repository into
