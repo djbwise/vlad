@@ -39,8 +39,11 @@ namespace :vlad do
   desc "Prepares application servers for deployment.".cleanup
 
   remote_task :setup_app, :roles => :app do
+    branch ||= "trunk"
+    scm_path = File.join(scm_path, branch)
+    
     dirs = [deploy_to, releases_path, shared_path]
-    dirs << scm_path unless skip_scm
+    dirs << scm_path
     dirs += shared_paths.keys.map { |d| File.join(shared_path, d) }
     dirs = dirs.join(' ')
 
